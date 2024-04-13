@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    event_detail
+{% endblock %}
+_______________________________________________________________
+{% block content %}
+<div style="min-height:12.5vh;"></div>
+<div class="container">
+    <div class="row">
+        <!-- Изображение события -->
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <img class="rounded img-fluid shadow" src="{{ url_for('static', filename='/DATA/Events/'+DATA[0].id|string+'.png') }}" alt="Изображение события" class="img-fluid" style="max-width: 400px;">
+        </div>
+        <!-- Информация о событии -->
+        <div class="col-md-6">
+            <h2>{{ DATA[0].name }}</h2>
+            <p>{{ DATA[0].comment }}</p>
+            <p>Дата: {{ DATA[0].date }}</p>
+            <!-- Организатор (клуб и его президент) -->
+            <p>Организатор: клуб "{{ DATA[0].club }}" (президент клуба {{ DATA[0].president }})</p>
+            <!-- Тип мероприятия (онлайн или офлайн) -->
+            <p>Тип: {{ DATA[0].online }}</p>
+            <!-- Адрес -->
+            <p>Адрес: {{ DATA[0].adress }}</p>
+            <!-- Теги -->
+            <p>Теги: {{ DATA[0].tags }}</p>
+            <!-- Призы и подарки -->
+            <p>Призы и подарки: {% if DATA[0].priz %} Есть {% else %} Нет {% endif %}</p>
+        </div>
+    </div>
+</div>
+<div style="min-height:10vh;"></div>
+{% endblock %}

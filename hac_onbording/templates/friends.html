@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Общение
+{% endblock %}
+_______________________________________________________________
+{% block content %}
+<section class="py-5">
+    <div class="container py-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn-light active" id="meetings-tab" data-bs-toggle="tab" data-bs-target="#meetings" type="button" role="tab" aria-controls="meetings" aria-selected="true">Встречи</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn-light" id="interests-tab" data-bs-toggle="tab" data-bs-target="#interests" type="button" role="tab" aria-controls="interests" aria-selected="false">Круг интересов</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link btn-light" id="students-tab" data-bs-toggle="tab" data-bs-target="#students" type="button" role="tab" aria-controls="students" aria-selected="false">Студенты</button>
+            </li>
+        </ul>
+        
+        <div class="tab-content" id="myTabContent">
+            <!-- Вкладка "Встречи" -->
+            <div class="tab-pane fade show active" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
+                <h3 class="mt-4 mb-3">Запланированные встречи</h3>
+                <!-- Список встреч -->
+                <ul class="list-group">
+                    <!-- Встреча 1 -->
+                    <li class="list-group-item">
+                        <h5>Встреча студенческого клуба</h5>
+                        <p>Организатор: @organizer1</p>
+                        <p>Место: Кафе "Подружка"</p>
+                        <p>Время: 18:00</p>
+                        <p>Цель: Обсуждение планов на ближайшие мероприятия и распределение обязанностей.</p>
+                    </li>
+                    <!-- Встреча 2 -->
+                    <li class="list-group-item">
+                        <h5>Встреча по интересам в программировании</h5>
+                        <p>Организатор: @coder123</p>
+                        <p>Место: Коворкинг "CodeSpace"</p>
+                        <p>Время: 16:00</p>
+                        <p>Цель: Обмен опытом и обсуждение актуальных тем в сфере программирования.</p>
+                    </li>
+                    <!-- Встреча 3 -->
+                    <li class="list-group-item">
+                        <h5>Вечер памяти классного руководителя</h5>
+                        <p>Организатор: @friend123</p>
+                        <p>Место: Ресторан "Музыка"</p>
+                        <p>Время: 19:00</p>
+                        <p>Цель: Встреча выпускников и обсуждение воспоминаний о классном руководителе.</p>
+                    </li>
+                    <!-- Добавьте еще встречи, если нужно -->
+                </ul>
+                <!-- Кнопка для создания новой встречи -->
+                <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#createMeetingModal">Создать встречу</button>
+            </div>
+
+            <!-- Модальное окно для создания новой встречи -->
+            <div class="modal fade" id="createMeetingModal" tabindex="-1" aria-labelledby="createMeetingModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createMeetingModalLabel">Создать встречу</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Форма для создания новой встречи -->
+                            <form>
+                                <div class="mb-3">
+                                    <label for="meetingTitle" class="form-label">Название встречи</label>
+                                    <input type="text" class="form-control" id="meetingTitle">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="meetingOrganizer" class="form-label">Организатор</label>
+                                    <input type="text" class="form-control" id="meetingOrganizer">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="meetingPlace" class="form-label">Место</label>
+                                    <input type="text" class="form-control" id="meetingPlace">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="meetingTime" class="form-label">Время</label>
+                                    <input type="text" class="form-control" id="meetingTime">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="meetingPurpose" class="form-label">Цель встречи</label>
+                                    <textarea class="form-control" id="meetingPurpose" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Создать</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка "Круг интересов" -->
+<div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
+    <h3 class="mt-4 mb-3">Круги интересов</h3>
+    <!-- Карточка круга интересов -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Геймеры</h5>
+            <p class="card-text">Обсуждение игр, новинок индустрии и проведение мероприятий для геймеров.</p>
+            <!-- Ссылка на чат для кружка геймеров -->
+            <a href="https://t.me/gamers_chat" class="btn btn-primary" target="_blank">
+                Чат в Telegram/VK
+            </a>
+        </div>
+    </div>
+    <!-- Карточка круга интересов -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Фотографы</h5>
+            <p class="card-text">Обсуждение фотографии, обмен опытом и проведение фотовыездов.</p>
+            <!-- Ссылка на чат для кружка фотографов -->
+            <a href="https://t.me/photographers_chat" class="btn btn-primary" target="_blank">
+                Чат в Telegram/VK
+            </a>
+        </div>
+    </div>
+    <!-- Карточка круга интересов -->
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Кулинары</h5>
+            <p class="card-text">Обмен рецептами, приготовление блюд и обсуждение кулинарных тем.</p>
+            <!-- Ссылка на чат для кружка кулинаров -->
+            <a href="https://t.me/cooking_chat" class="btn btn-primary" target="_blank">
+                Чат в Telegram/VK
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Модальное окно чата -->
+<div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chatModalLabel">Чат</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <!-- Список участников слева -->
+                    <div class="col-md-4">
+                        <h6>Участники</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex align-items-center">
+                                <img src="{{ url_for('static', filename='img/avatar.jpg') }}" alt="User Avatar" class="msg-avatar me-2">
+                                <span>@user1</span>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <img src="{{ url_for('static', filename='img/avatar.jpg') }}" alt="User Avatar" class="msg-avatar me-2">
+                                <span>@user2</span>
+                            </li>
+                            <!-- Добавьте еще участников по мере необходимости -->
+                        </ul>
+                    </div>
+                    <!-- Поле для чата справа -->
+                    <div class="col-md-8">
+                        <h6>Чат</h6>
+                        <!-- Поле для сообщений -->
+                        <div class="messages mt-3">
+                            <div class="incoming-msg">
+                                <img src="{{ url_for('static', filename='img/bot.jpg') }}" alt="Avatar" class="msg-avatar">
+                                <div class="incoming-msg-content">
+                                    Привет, сегодня играем?
+                                </div>
+                            </div>
+
+                            <!-- Пример исходящего сообщения -->
+                            <div class="outgoing-msg">
+                                <div class="outgoing-msg-content">
+                                    Привет! Конечно
+                                </div>
+                                <img src="{{ url_for('static', filename='img/avatar.jpg') }}" alt="Avatar" class="msg-avatar">
+                            </div>
+
+                            <div class="incoming-msg">
+                                <img src="{{ url_for('static', filename='img/bot.jpg') }}" alt="Avatar" class="msg-avatar">
+                                <div class="incoming-msg-content">
+                                    Отлично, тогда сегодня в 7!
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Форма для отправки сообщения -->
+                        <form class="message-form mt-3">
+                            <input type="text" class="form-control mb-2" placeholder="Введите сообщение">
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+            <!-- Вкладка "Студенты" -->
+<div class="tab-pane fade" id="students" role="tabpanel" aria-labelledby="students-tab">
+    <!-- Таблица со списком студентов -->
+    <table class="custom-table">
+        <thead>
+            <tr>
+                <th scope="col">Имя</th>
+                <th scope="col">Клубы</th>
+                <th scope="col">Профиль</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Строка таблицы для каждого студента -->
+            {% for i in DATA %}
+            <tr>
+                <td>
+                    <img src="{{ url_for('static', filename='/DATA/Users/'+i.id|string+'.png') }}" alt="Avatar" class="msg-avatar">
+                    {{  i.FIO }}
+                </td>
+                <td>{{  i.clubs }}</td>
+                <td><a href="profile?id={{ i.id }}">@{{  i.nik }}</a></td>
+            </tr>
+            {% endfor %}
+<!--            <tr>-->
+<!--                <td>-->
+<!--                    <img src="{{ url_for('static', filename='img/avatar2.jpg') }}" alt="Avatar" class="msg-avatar"> Мария Петрова-->
+<!--                </td>-->
+<!--                <td>Фотографы</td>-->
+<!--                <td><a href="#">@mariap</a></td>-->
+<!--            </tr>-->
+            <!-- Добавьте других студентов, если нужно -->
+        </tbody>
+    </table>
+</div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

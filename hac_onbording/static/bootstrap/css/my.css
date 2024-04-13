@@ -1,0 +1,84 @@
+.game-area {
+    position: relative;
+    width: 80%; /* Ширина игровой области */
+    height: 300px; /* Высота игровой области */
+    border: 2px solid #000; /* Рамка вокруг игровой области */
+    margin: auto; /* Центрирование игровой области */
+}
+
+.marker {
+    position: absolute;
+    width: 20px; /* Ширина точки */
+    height: 20px; /* Высота точки */
+    background-color: red; /* Цвет точки */
+    border-radius: 50%; /* Округление точки */
+}
+
+.completed {
+    background-color: green; /* Цвет завершенной точки */
+}
+
+.road {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.road::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Толщина пунктирной линии */
+    background-color: white; /* Цвет пунктирной линии */
+    border-radius: 1px; /* Радиус краев пунктирной линии */
+    box-shadow: 0 0 5px 2px white; /* Тень пунктирной линии */
+    z-index: 1;
+}
+
+.marker:first-child ~ .road::after {
+    background-image: linear-gradient(to right, white 50%, transparent 50%);
+}
+
+/* Стили для входящих сообщений */
+.incoming-msg {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Добавьте отступ между сообщениями */
+}
+
+.incoming-msg-content {
+    background-color: #db4b4b; /* Цвет фона для входящих сообщений */
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Максимальная ширина сообщения */
+}
+
+/* Стили для исходящих сообщений */
+.outgoing-msg {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Сообщения выравниваются справа */
+    margin-bottom: 10px; /* Добавьте отступ между сообщениями */
+}
+
+.outgoing-msg-content {
+    background-color: #134863; /* Цвет фона для исходящих сообщений */
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%; /* Максимальная ширина сообщения */
+}
+
+/* Стили для аватаров сообщений */
+.msg-avatar {
+    width: 30px; /* Задайте нужную ширину для аватара */
+    height: 30px; /* Задайте нужную высоту для аватара */
+    border-radius: 50%; /* Создайте круглую форму для аватара */
+    margin-right: 10px; /* Добавьте отступ между аватаром и текстом сообщения */
+}
+
+.white-icon {
+    color:white !important;
+    text-decoration-color: white !important;
+}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Профиль
+{% endblock %}
+_______________________________________________________________
+{% block content %}
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="text-center mb-4">
+                    <img src="{{ url_for('static', filename='/DATA/Users/'+ DATA[0].id|string +'.png') }}" class="rounded-circle" width="150" height="150" alt="Аватар">
+                </div>
+                <h2 class="text-center mb-4">{{ DATA[0].FIO }}</h2>
+                <p class="card-text">@{{ DATA[0].nik }}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Группа:</strong> {{ DATA[0].gruppa }}</li>
+                    <li class="list-group-item"><strong>Специальность:</strong> {{ DATA[0].special }}</li>
+                    <li class="list-group-item"><strong>Email:</strong> {{ DATA[0].mail }}</li>
+                    <li class="list-group-item"><strong>Телефон:</strong> {{ DATA[0].number }}</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <h2 class="fw-bold mb-4">ПРОФИЛЬ</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">О себе</h5>
+                        <p class="card-text">{{ DATA[0].comment }}</p>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Образование</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Университет: {{ DATA[0].univer }}</li>
+                            <li class="list-group-item">Год поступления: {{ DATA[0].god_begin|string }}</li>
+                            <li class="list-group-item">Планируемый выпуск: {{ DATA[0].god_end|string }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Клубы:</h5>
+<!--                        <h5 class="card-title">Клуб</h5>-->
+                        {% for i in DATA[0].clubs %}
+                        <a class="card-text" href="club_detail?id={{ i.id|string }}">{{ i.name }}</a><br>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card mt-4">
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Интересы</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for i in DATA[0].interests %}
+                            <li class="list-group-item">{{ i }}</li>
+<!--                            <li class="list-group-item">Интерес 2</li>-->
+<!--                            <li class="list-group-item">Интерес 3</li>-->
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Социальные сети</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Telegram: <a href="{{ DATA[0].telegram }}">Ссылка на профиль</a></li>
+                            <li class="list-group-item">ВКонтакте: <a href="{{ DATA[0].vk }}">Ссылка на профиль</a></li>
+                            <li class="list-group-item">Whats app: <a href="{{ DATA[0].whatsapp }}">Ссылка на профиль</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Кнопка "Достижения" -->
+                <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#achievementsModal">
+                    Достижения
+                </button>
+                <!-- Модальное окно с информацией о достижениях -->
+                <div class="modal fade" id="achievementsModal" tabindex="-1" aria-labelledby="achievementsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="achievementsModalLabel">Достижения</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Здесь будут отображаться достижения, после выполнения которых ты будешь получать призы от вуза. Больше участвуешь - больше получаешь!</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

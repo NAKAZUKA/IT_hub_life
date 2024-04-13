@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Club Detail
+{% endblock %}
+_______________________________________________________________
+{% block content %}
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 class="fw-bold">{{ DATA[0].name }}</h2>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Описание:</h4>
+                <p>{{ DATA[0].comment }}</p>
+            </div>
+            <div class="col-md-6">
+                <img style="width:35%;" src="{{ url_for('static', filename='/DATA/Clubs/'+DATA[0].id|string+'.png') }}" class="img-fluid" alt="Герб клуба">
+
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Гимн:</h4>
+                <p>{{ DATA[0].gimn }}</p>
+            </div>
+            <div class="col-md-6">
+                <h4>Президент:</h4>
+                <div class="d-flex align-items-center">
+                    <img src="{{ url_for('static', filename='/DATA/Users/'+DATA[0].president.id|string+'.png') }}" class="rounded-circle me-3" alt="Аватар президента" style="width: 100px;">
+                    <p>{{ DATA[0].president.FIO }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Участники:</h4>
+                <ul>
+                    {% for i in DATA[0].ychastniki %}
+                    <li>{{ i.FIO }}</li>
+                    {% endfor %}
+                    <!-- Добавьте больше участников при необходимости -->
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h4>Мероприятия:</h4>
+                <ul>
+                    {% for i in DATA[0].events %}
+                    <li>{{ i.name }}</li>
+                    {% endfor %}
+                    <!-- Добавьте больше мероприятий при необходимости -->
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Рейтинг клуба:</h4>
+                <p>Место в рейтинге: {{ DATA[0].reiting }}</p>
+            </div>
+            <div class="col-md-6">
+                <form action="/join_club/{{ DATA[0].id }}" method="post">
+                    <button type="submit" class="btn btn-primary">Присоединиться</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
