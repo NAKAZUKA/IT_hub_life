@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 
 
 # Замените 'YOUR_TOKEN' на ваш токен бота
-TOKEN = '7139295438:AAGiCObOWxNpx4iAKrpcULFe0wJI_nTjiIQ'
+TOKEN = ''
 
 # ID психолога
 PSYCHOLOGIST_ID = '5074965474'
